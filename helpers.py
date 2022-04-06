@@ -10,12 +10,13 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 ########### Set up the default figures ######
 
 def base_fig():
-    data=go.Table(columnwidth = [200,200,1000],
+    data=go.Table(columnwidth = [200,200,1000], line_color='darkslategray',
+                    fill_color='lightskyblue',
                     header=dict(values=['date', 'time', 'post', 'Vader sentiment'], align=['left']),
                     cells=dict(align=['left'],
                                values=[[1,2,3],
                                        [1,2,3],
-                                       ['waiting for data','waiting for data','waiting for data'],
+                                       ['click on scrape now','click on scrape now','click on scrape now'],
                                        ['Neutral','Neutral','Neutral']
                                        ])
                  )
@@ -23,7 +24,8 @@ def base_fig():
     return fig
 
 def error_fig():
-    data=go.Table(columnwidth = [200,200,1000],
+    data=go.Table(columnwidth = [200,200,1000],line_color='darkslategray',
+                    fill_color='lightskyblue',
                     header=dict(values=['date', 'time', 'post', 'Vader sentiment'], align=['left']),
                     cells=dict(align=['left'],
                                values=[['whoa!','whoa!','whoa!'],
