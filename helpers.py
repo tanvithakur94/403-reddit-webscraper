@@ -15,7 +15,7 @@ def base_fig():
                     cells=dict(align=['left'],
                                values=[[1,2,3],
                                        [1,2,3],
-                                       ['click on scrape now','click on scrape now','click on scrape now'],
+                                       ['waiting for data','waiting for data','waiting for data'],
                                        ['Neutral','Neutral','Neutral']
                                        ])
                  )
