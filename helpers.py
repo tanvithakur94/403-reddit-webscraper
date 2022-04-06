@@ -18,7 +18,8 @@ def base_fig():
                                        [1,2,3],
                                        ['waiting for data','waiting for data','waiting for data'],
                                        ['Neutral','Neutral','Neutral']
-                                       ])
+                                       ],line_color='darkslategray',
+               fill_color='lightcyan')
                  )
     fig = go.Figure([data])
     return fig
@@ -32,7 +33,8 @@ def error_fig():
                                        [3,2,1],
                                        ['Slow down!','Scraping takes a sec','Try back later!'],
                                        ['Neutral','Neutral','Neutral']
-                                       ])
+                                       ],line_color='darkslategray',
+               fill_color='lightcyan')
                  )
     fig = go.Figure([data])
     return fig
