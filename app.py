@@ -9,7 +9,7 @@ from helpers import *
 
 tabtitle = 'Reddit Webscraper'
 sourceurl = 'https://old.reddit.com/r/AskReddit/'
-githublink = 'https://github.com/plotly-dash-apps/602-webscraper-sentiment-analysis'
+githublink = 'https://github.com/tanvithakur94/403-reddit-webscraper'
 
 ########### Initiate the app
 # external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
