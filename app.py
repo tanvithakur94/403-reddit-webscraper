@@ -24,7 +24,11 @@ app.layout = html.Div(children=[
     html.H1('Webscraping posts from reddit'),
     # Dropdowns
     html.Div(children=[
-        html.Button('Scrape Now!', id='submit-val', n_clicks=0),
+        html.Button('Scrape Now!', id='submit-val', n_clicks=0,style={'display': 'inline-block', 'vertical-align': 'middle',
+                  "min-width": "150px",
+                   'height': "25px",
+                   "margin-top": "0px",
+                   "margin-left": "5px"}),
         html.Div(id='message'),
         dcc.Graph(id='figure-1'),
     ], className='twelve columns'),
