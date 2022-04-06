@@ -11,8 +11,8 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 def base_fig():
     data=go.Table(columnwidth = [200,200,1000],
-                    header=dict(values=['date', 'time', 'post', 'sentiment'], align=['left']),
-                    cells=dict(align=['left'],
+                    header=dict(values=['date', 'time', 'post', 'Vader sentiment'], align=['left']),
+                    cells=dict(align=['center'],
                                values=[[1,2,3],
                                        [1,2,3],
                                        ['waiting for data','waiting for data','waiting for data'],
@@ -24,7 +24,7 @@ def base_fig():
 
 def error_fig():
     data=go.Table(columnwidth = [200,200,1000],
-                    header=dict(values=['date', 'time', 'post', 'sentiment'], align=['left']),
+                    header=dict(values=['date', 'time', 'post', 'Vader sentiment'], align=['left']),
                     cells=dict(align=['left'],
                                values=[['whoa!','whoa!','whoa!'],
                                        [3,2,1],
