@@ -118,13 +118,15 @@ def scrape_reddit():
     ########### Set up the figure ######
 
     data=go.Table(columnwidth = [200,200,1000],
-                    header=dict(values=final_df.columns, align=['left']),
+                    header=dict(values=final_df.columns, align=['left'],line_color='darkslategray',
+               fill_color='lightcyan'),
                     cells=dict(align=['left'],
                                values=[final_df['date'],
                                        final_df['time'],
                                        final_df['post'].values,
                                        final_df['sentiment'].values
-                                       ])
+                                       ],line_color='darkslategray',
+               fill_color='lightcyan')
                  )
     fig = go.Figure([data])
     return fig
