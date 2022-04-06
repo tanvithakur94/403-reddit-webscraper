@@ -3,6 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import datetime
+from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 
 
 
@@ -10,28 +11,45 @@ import datetime
 
 def base_fig():
     data=go.Table(columnwidth = [200,200,1000],
-                    header=dict(values=['date', 'time', 'post'], align=['left']),
+                    header=dict(values=['date', 'time', 'post', 'sentiment'], align=['left']),
                     cells=dict(align=['left'],
                                values=[[1,2,3],
                                        [1,2,3],
-                                       ['waiting for data','waiting for data','waiting for data']])
+                                       ['waiting for data','waiting for data','waiting for data'],
+                                       ['Neutral','Neutral','Neutral']
+                                       ])
                  )
     fig = go.Figure([data])
     return fig
 
 def error_fig():
     data=go.Table(columnwidth = [200,200,1000],
-                    header=dict(values=['date', 'time', 'post'], align=['left']),
+                    header=dict(values=['date', 'time', 'post', 'sentiment'], align=['left']),
                     cells=dict(align=['left'],
                                values=[['whoa!','whoa!','whoa!'],
                                        [3,2,1],
-                                       ['Slow down!','Scraping takes a sec','Try back later!']])
+                                       ['Slow down!','Scraping takes a sec','Try back later!'],
+                                       ['Neutral','Neutral','Neutral']
+                                       ])
                  )
     fig = go.Figure([data])
     return fig
 
-
-
+def sentiment_scores(sentence):
+    try:
+    # Create a SentimentIntensityAnalyzer object.
+        sid_obj = SentimentIntensityAnalyzer()
+        sentiment_dict = sid_obj.polarity_scores(sentence)
+        score = sentiment_dict['compound']
+        if score >= 0.05 :
+            final=f"Positive: {round(score,2)}"
+        elif score <= - 0.05 :
+            final=f"Negative: {round(score,2)}"
+        else :
+            final=f"Neutral: {round(score,2)}"
+        return final
+    except:
+        return "Error"
 
 ########### Functions  ######
 
@@ -85,7 +103,11 @@ def scrape_reddit():
     # split into 2 date/time variables
     working_df['date']=working_df['UTC_date'].dt.date
     working_df['time']=working_df['UTC_date'].dt.time
-    final_df = working_df[['date', 'time', 'post']].copy()
+    # add sentiment analysis
+    working_df['sentiment'] = working_df['post'].apply(sentiment_scores)
+
+    # send final df
+    final_df = working_df[['date', 'time', 'post', 'sentiment']].copy()
 
 
 
@@ -96,7 +118,9 @@ def scrape_reddit():
                     cells=dict(align=['left'],
                                values=[final_df['date'],
                                        final_df['time'],
-                                       final_df['post'].values])
+                                       final_df['post'].values,
+                                       final_df['sentiment'].values
+                                       ])
                  )
     fig = go.Figure([data])
     return fig
