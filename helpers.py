@@ -12,7 +12,7 @@ from vaderSentiment.vaderSentiment import SentimentIntensityAnalyzer
 def base_fig():
     data=go.Table(columnwidth = [200,200,1000],
                     header=dict(values=['date', 'time', 'post', 'Vader sentiment'], align=['left']),
-                    cells=dict(align=['center'],
+                    cells=dict(align=['left'],
                                values=[[1,2,3],
                                        [1,2,3],
                                        ['waiting for data','waiting for data','waiting for data'],
